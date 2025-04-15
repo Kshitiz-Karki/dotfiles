@@ -24,11 +24,11 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# Generated for envman. Do not edit.
+# Generated for envman by https://webinstall.dev/. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Added for nvim switcher (https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b)
-alias lazy="NVIM_APPNAME=Lazyvim nvim"
+alias lz="NVIM_APPNAME=Lazyvim nvim"
 alias nvchad="NVIM_APPNAME=Nvchad nvim"
 
 function nv() {
@@ -44,3 +44,12 @@ function nv() {
 }
 
 bind -x '"\C-a": nv'
+
+# eza
+export EZA_CONFIG_DIR=~/.config/eza/
+# aliases
+alias ls="eza --icons=always --color=always -a --group-directories-first"
+alias ll="eza --icons=always --color=always -a --group-directories-first --git --long"
+alias c="clear"
+#starship
+eval "$(starship init bash)"
