@@ -222,6 +222,6 @@ remember_window_size yes
 confirm_os_window_close 0
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Rosé Pine
 include current-theme.conf
 # END_KITTY_THEME
