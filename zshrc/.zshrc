@@ -57,9 +57,10 @@ source <(fzf --zsh)
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Added for nvim switcher (https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b)
-alias lz="NVIM_APPNAME=Lazyvim nvim"
+alias lz="nvim"
+#alias lz="NVIM_APPNAME=Lazyvim nvim"
 #alias nvchad="NVIM_APPNAME=Nvchad nvim"
-#
+
 #function nv() {	
 #  items=("Lazyvim" "Nvchad" "default")
 #  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config " --height=~50% --layout=reverse --border --exit-0)
@@ -87,3 +88,6 @@ eval "$(starship init zsh)"
 
 #zoxide
 export _ZO_DATA_DIR=~/.config/zoxide/
+export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/fedorator/bin:$PATH"
+export FEDORATOR_PATH="/home/$USER/.local/share/fedorator"
+export EDITOR="nvim"
