@@ -53,6 +53,7 @@ export EZA_CONFIG_DIR=~/.config/eza/
 alias ls="eza --icons=always --color=always -a --group-directories-first"
 alias ll="eza --icons=always --color=always -a --group-directories-first --git --long"
 alias c="clear"
+alias q="exit"
 #starship
 eval "$(starship init bash)"
 export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/fedorator/bin:$PATH"
