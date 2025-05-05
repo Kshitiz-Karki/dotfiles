@@ -5,6 +5,16 @@ return {
       -- add css
       vim.list_extend(opts.ensure_installed, {
         "css",
+        "bash",
+        "c",
+        "html",
+        "javascript",
+        "json",
+        "markdown",
+        "python",
+        "tsx",
+        "typescript",
+        "java",
       })
     end,
   },
