@@ -84,6 +84,9 @@ alias ll="eza --icons=always --color=always -a --group-directories-first --git -
 alias c="clear"
 alias lzi='lz $(fzf -m --preview="bat --color=always {}")'
 alias q="exit"
+alias rm="trash-put"
+alias updateAllApps="sudo dnf update -y && flatpak update"
+
 #starship
 eval "$(starship init zsh)"
 

@@ -54,6 +54,9 @@ alias ls="eza --icons=always --color=always -a --group-directories-first"
 alias ll="eza --icons=always --color=always -a --group-directories-first --git --long"
 alias c="clear"
 alias q="exit"
+alias rm="trash-put"
+alias updateAllApps="sudo dnf update -y && flatpak update"
+
 #starship
 eval "$(starship init bash)"
 export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/fedorator/bin:$PATH"
