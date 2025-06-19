@@ -106,3 +106,4 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+export PATH=~/bin:$PATH
