@@ -62,3 +62,4 @@ eval "$(starship init bash)"
 export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/fedorator/bin:$PATH"
 export FEDORATOR_PATH="/home/$USER/.local/share/fedorator"
 export EDITOR="nvim"
+export PATH=~/bin:$PATH
