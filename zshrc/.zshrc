@@ -79,7 +79,7 @@ alias lz="nvim"
 export EZA_CONFIG_DIR=~/.config/eza/
 
 # aliases
-alias ls="eza --icons=always --color=always -a --group-directories-first"
+# alias ls="eza --icons=always --color=always -a --group-directories-first", use the one from omarchy
 alias ll="eza --icons=always --color=always -a --group-directories-first --git --long"
 alias c="clear"
 alias lzi='lz $(fzf -m --preview="bat --color=always {}")'
@@ -106,5 +106,4 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-export PATH=~/bin:$PATH
 export PATH=~/bin:$PATH

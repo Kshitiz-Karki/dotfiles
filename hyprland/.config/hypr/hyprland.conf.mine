@@ -24,7 +24,7 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,auto,mirror, HDMI-A-1
+monitor=,preferred,auto,auto
 
 
 ###################
@@ -37,7 +37,6 @@ monitor=,preferred,auto,auto,mirror, HDMI-A-1
 $terminal = kitty
 $fileManager = nautilus
 $menu = wofi --show drun
-$browser = brave --new-window --ozone-platform=wayland
 
 
 #################
@@ -216,7 +215,6 @@ device {
 $mainMod = SUPER # Sets "Windows" key as main modifier
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, B, exec, $browser
 bind = $mainMod, Return, exec, $terminal
 # bind = $mainMod, Q, exec, $terminal
 # bind = $mainMod, C, killactive,
