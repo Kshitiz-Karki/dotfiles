@@ -107,4 +107,4 @@ function y() {
 	rm -f -- "$tmp"
 }
 export PATH=~/bin:$PATH
-source ~/.local/share/omarchy/default/bash/rc
+# source ~/.local/share/omarchy/default/bash/rc
