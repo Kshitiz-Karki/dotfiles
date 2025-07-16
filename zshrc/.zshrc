@@ -57,7 +57,6 @@ source <(fzf --zsh)
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Added for nvim switcher (https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b)
-alias lz="nvim"
 #alias lz="NVIM_APPNAME=Lazyvim nvim"
 #alias nvchad="NVIM_APPNAME=Nvchad nvim"
 
@@ -77,15 +76,6 @@ alias lz="nvim"
 
 # eza
 export EZA_CONFIG_DIR=~/.config/eza/
-
-# aliases
-# alias ls="eza --icons=always --color=always -a --group-directories-first", use the one from omarchy
-alias ll="eza --icons=always --color=always -a --group-directories-first --git --long"
-alias c="clear"
-alias lzi='lz $(fzf -m --preview="bat --color=always {}")'
-alias q="exit"
-alias rm="trash-put"
-alias updateAllApps="sudo dnf update -y && flatpak update"
 
 #starship
 eval "$(starship init zsh)"
@@ -107,4 +97,7 @@ function y() {
 	rm -f -- "$tmp"
 }
 export PATH=~/bin:$PATH
-# source ~/.local/share/omarchy/default/bash/rc
+source ~/.config/zsh/aliases
+source ~/.config/zsh/shell
+source ~/.config/zsh/envs
+source ~/.config/zsh/functions
