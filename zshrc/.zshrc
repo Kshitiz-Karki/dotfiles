@@ -96,7 +96,8 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-export PATH=~/bin:$PATH
+# export PATH=~/bin:$PATH
+export PATH="$HOME/.cargo/bin:$HOME/bin:$PATH"
 source ~/.config/zsh/aliases
 source ~/.config/zsh/shell
 source ~/.config/zsh/envs
