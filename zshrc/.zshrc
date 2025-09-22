@@ -82,8 +82,7 @@ eval "$(starship init zsh)"
 
 #zoxide
 export _ZO_DATA_DIR=~/.config/zoxide/
-export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/fedorator/bin:$PATH"
-export FEDORATOR_PATH="/home/$USER/.local/share/fedorator"
+
 export EDITOR="nvim"
 
 #shell wrapper that provides the ability to change the current working directory when exiting Yazi.
@@ -96,7 +95,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-export PATH=~/bin:$PATH
 source ~/.config/zsh/aliases
 source ~/.config/zsh/envs
 source ~/.config/zsh/functions
+export PATH=~/bin:$PATH
