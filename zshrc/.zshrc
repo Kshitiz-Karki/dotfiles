@@ -99,3 +99,7 @@ source ~/.config/zsh/aliases
 source ~/.config/zsh/envs
 source ~/.config/zsh/functions
 export PATH=~/bin:$PATH
+#added for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"

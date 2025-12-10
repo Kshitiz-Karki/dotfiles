@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:monospace 8
+font pango:Adwaita Sans 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -62,8 +63,8 @@ bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+k focus down
-bindsym $mod+j focus up
+bindsym $mod+k focus up
+bindsym $mod+j focus down
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
@@ -74,8 +75,8 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+j move up
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
@@ -217,15 +218,15 @@ bar {
     urgent_workspace   #EC69A0 #DB3279 #FFFFFF
     binding_mode       #b691d3 #A07CBC #FFFFFF
   }
-  # status_command i3status
-  status_command ~/.config/bumblebee-status/bumblebee-status -m cpu memory battery time network \
-		pasink pasource -p time.format="%H:%M" -t moonlight-powerline
-  position top
+  status_command i3status
+  # status_command ~/.config/bumblebee-status/bumblebee-status -m cpu memory battery time network \
+  # pasink pasource -p time.format="%H:%M" -t moonlight-powerline
+  # position top
 }
 
 # added by me
 # exec_always feh --bg-fill ~/Pictures/wallpapers/ign_cityRainOther.png
-exec_always feh --bg-scale ~/Pictures/wallpapers/ign_cityRainOther.png
+exec_always feh --bg-scale ~/Pictures/background.png
 
 bindsym $mod+shift+x exec i3lock
 
@@ -239,8 +240,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
-bindsym $mod+b exec brave_browser
-exec brave_browser 
+bindsym $mod+b exec brave-browser
 
 # hide_edge_borders smart
 
