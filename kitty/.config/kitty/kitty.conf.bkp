@@ -1,3 +1,5 @@
+shell /usr/bin/zsh
+
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_FONTS
@@ -8,7 +10,7 @@ bold_italic_font auto
 # END_KITTY_FONTS
 
 # Font size (in pts)
-font_size        14.0
+font_size        11.0
 
 # The foreground color
 #foreground       #c0b18b
@@ -95,12 +97,12 @@ open_url_with default
 term xterm-kitty
 
 # The width (in pts) of window borders. Will be rounded to the nearest number of pixels based on screen resolution.
-#window_border_width 0
+# window_border_width 0
 
 #window_margin_width 15
 
 # The color for the border of the active window
-#active_border_color #ffffff
+# active_border_color #ffffff
 
 # The color for the border of inactive windows
 #inactive_border_color #cccccc
@@ -222,6 +224,6 @@ remember_window_size yes
 confirm_os_window_close 0
 
 # BEGIN_KITTY_THEME
-# Rosé Pine
+# Tokyo Night
 include current-theme.conf
 # END_KITTY_THEME
