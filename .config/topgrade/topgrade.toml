@@ -1,0 +1,65 @@
+# For more useful flags and config options, check below:
+# https://christitus.com/topgrade-linux/
+# https://github.com/topgrade-rs/topgrade/blob/main/config.example.toml
+
+[misc]
+# Cache sudo credentials upfront to avoid mid-run password prompts
+pre_sudo = true
+
+# Steps to always skip
+disable = ["snap"]
+
+# Steps to run before all others
+# first = ["chezmoi"]
+
+# Steps to run after all others
+last = ["flatpak"]
+
+# Ignore failures for noisy or unreliable steps
+# ignore_failures = ["pip3"]
+
+# Clean up old temp files after a run
+cleanup = true
+
+# Send a desktop notification when done
+notify_end = "on_failure"
+
+[git]
+# Pull these repos every time you run topgrade
+repos = [
+    "~/Documents/github/*/",
+]
+# Set to `false` to skip pulling/fetching the predefined git repos
+pull_predefined = false
+
+# Pull in parallel (default: 5)
+max_concurrency = 5
+# Rebase and autostash instead of plain merge
+# arguments = "--rebase --autostash"
+
+[flatpak]
+# Update system-wide Flatpak installs (requires sudo)
+use_sudo = true
+
+[python]
+# Update pip packages (disabled by default)
+enable_pip_review = true
+
+[firmware]
+# Only show available firmware updates, do not install
+upgrade = false
+
+# Commands to run before anything
+[pre_commands]
+# "Backup Configs" = "~/scripts/backup-configs.sh"
+
+# Commands to run after anything
+[post_commands]
+"DNF Cleanup" = "sudo dnf autoremove -y"
+
+# Custom commands
+[commands]
+# "Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
+# "Custom command using interactive shell (unix)" = "-i vim_upgrade"
+"Check binaries version" = "~/Documents/linops/scripts/check-version.py"
+
