@@ -22,6 +22,8 @@ set $right l
 set $term foot
 set $bluetui bluetui-v0.8.1
 set $nmtui nmtui-go_0.2.7
+set $scripts_path ~/Documents/linops/scripts
+set $launcher_scripts_path ~/Documents/linops/scripts/rofi
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -46,7 +48,8 @@ set $browser brave-browser
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-output * bg /home/nkk/Documents/github/CozyPixels/Nord/Dynamic Wallpapers/ign_Fuji-2.png fill
+# output * bg /home/nkk/Documents/github/CozyPixels/Nord/Dynamic Wallpapers/ign_Fuji-2.png fill
+exec waypaper --restore
 # output * bg /usr/share/backgrounds/default.jxl fill
 #
 # Example configuration:
@@ -56,7 +59,7 @@ output * bg /home/nkk/Documents/github/CozyPixels/Nord/Dynamic Wallpapers/ign_Fu
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # disable laptop screen
 # output eDP-1 disable
-output eDP-1 scale 1.5
+output eDP-1 scale 1
 # optional: make sure external monitor is primary
 # output HDMI-A-1 resolution 1920x1080 position 0,0
 
@@ -64,10 +67,10 @@ output eDP-1 scale 1.5
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -135,7 +138,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Lock screen
-bindsym $mod+Escape exec swaylock
+bindsym $mod+Escape exec gtklock
 #
 # Moving around:
 #
@@ -253,22 +256,22 @@ bindsym Escape mode "default"
 bindsym $mod+r mode "resize"
 
 # menu keybinds
-bindsym $mod+m exec ~/Documents/linops/scripts/menu.sh
+bindsym $mod+m exec $launcher_scripts_path/menu.sh
 # bindsym $mod+Shift+m mode "menu"
 
 # mode "menu" {
   # taken from https://github.com/Ruixi-rebirth/sway-dotfiles/tree/main
-  # waybar toggle #
-  bindsym $mod+Alt+k exec ~/Documents/linops/scripts/keybindings-sway.sh
-  bindsym $mod+Alt+v exec ~/Documents/linops/scripts/keybindings-vimium.sh
-  bindsym $mod+Alt+b exec pidof $bluetui || $term --app-id=bluetui -e ~/.local/bin/$bluetui
+  bindsym $mod+Alt+k exec $launcher_scripts_path/keybindings-sway.sh
+  bindsym $mod+Alt+v exec $launcher_scripts_path/keybindings-vimium.sh
+  # bindsym $mod+Alt+b exec pidof $bluetui || $term --app-id=bluetui -e ~/.local/bin/$bluetui
   bindsym $mod+Alt+a exec pidof wiremix || $term --app-id=wiremix -e /usr/bin/wiremix
-  bindsym $mod+Alt+w exec pidof $nmtui || $term --app-id=nmtui-go -e ~/.local/bin/$nmtui
-  bindsym $mod+Alt+t exec killall -SIGUSR1 waybar
-  bindsym $mod+s exec ~/Documents/linops/scripts/tmux-sessions
-  bindsym $mod+p exec ~/Documents/linops/scripts/tmux-projects
-  bindsym $mod+c exec ~/Documents/linops/scripts/cliphist-lookup-rofi
-  bindsym $mod+d exec ~/Documents/linops/scripts/cliphist-delete-rofi
+  # bindsym $mod+Alt+w exec pidof $nmtui || $term --app-id=nmtui-go -e ~/.local/bin/$nmtui
+  bindsym $mod+Alt+t exec $scripts_path/toggle-waybar.sh
+  # bindsym $mod+Alt+t exec killall -SIGUSR1 waybar
+  bindsym $mod+s exec $launcher_scripts_path/tmux-sessions
+  bindsym $mod+p exec $launcher_scripts_path/tmux-projects
+  # bindsym $mod+c exec $launcher_scripts_path/cliphist-lookup
+  # bindsym $mod+d exec $launcher_scripts_path/cliphist-delete
   bindsym $mod+Alt+x exec rofi -show power-menu -modi power-menu:~/Documents/github/rofi-power-menu/rofi-power-menu
   # bindsym $mod+Alt+
   # bindsym Escape mode "default"
@@ -337,7 +340,7 @@ bindsym $mod+Shift+u exec ~/Documents/backup/secret.py user | wl-copy && notify-
 
 # autostart
 exec --no-startup-id wlsunset -t 3000 -T 5000 -s 18:30 -S 06:00
-exec --no-startup-id wl-paste --type text --watch cliphist store
+# exec --no-startup-id wl-paste --type text --watch cliphist store
 # exec_always --no-startup-id ~/bin/autotiling
 # exec_always  --no-startup-id  mako &
 
@@ -402,11 +405,15 @@ for_window [app_id="foot-scratchpad"] move to scratchpad
     for_window [app_id="brave-browser"] focus
     assign [app_id="dev.zed.Zed"] 2
     for_window [app_id="dev.zed.Zed"] focus
-    assign [app_id="foot"] 3
-    for_window [app_id="foot"] focus
     # replace app_id with class, if socket=xwayland
-    assign [app_id="obsidian"] 4
+    assign [app_id="obsidian"] 3
     for_window [app_id="obsidian"] focus
+    assign [app_id="anki"] 4
+    for_window [app_id="anki"] focus
+    assign [app_id="chromium-browser"] 5
+    for_window [app_id="chromium-browser"] focus
+    assign [app_id="foot"] 6
+    for_window [app_id="foot"] focus
 
 ### Appearance
 # Font for window titles/tabs
