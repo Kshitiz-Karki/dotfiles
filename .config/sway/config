@@ -272,7 +272,7 @@ bindsym $mod+m exec $launcher_scripts_path/menu.sh
   bindsym $mod+p exec $launcher_scripts_path/tmux-projects
   # bindsym $mod+c exec $launcher_scripts_path/cliphist-lookup
   # bindsym $mod+d exec $launcher_scripts_path/cliphist-delete
-  bindsym $mod+Alt+x exec rofi -show power-menu -modi power-menu:~/Documents/github/rofi-power-menu/rofi-power-menu
+  bindsym $mod+Alt+x exec rofi -show power-menu -modi power-menu:$launcher_scripts_path/power-menu
   # bindsym $mod+Alt+
   # bindsym Escape mode "default"
 # }
