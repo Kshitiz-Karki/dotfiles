@@ -22,8 +22,8 @@ set $right l
 set $term foot
 set $bluetui bluetui-v0.8.1
 set $nmtui nmtui-go_0.2.7
-set $scripts_path ~/Documents/linops/scripts
-set $launcher_scripts_path ~/Documents/linops/scripts/rofi
+set $scripts_path ~/Projects/linops/scripts
+set $launcher_scripts_path ~/Projects/linops/scripts/rofi
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -264,7 +264,7 @@ bindsym $mod+m exec $launcher_scripts_path/menu.sh
   bindsym $mod+Alt+k exec $launcher_scripts_path/keybindings-sway.sh
   bindsym $mod+Alt+v exec $launcher_scripts_path/keybindings-vimium.sh
   # bindsym $mod+Alt+b exec pidof $bluetui || $term --app-id=bluetui -e ~/.local/bin/$bluetui
-  bindsym $mod+Alt+a exec pidof wiremix || $term --app-id=wiremix -e /usr/bin/wiremix
+  # bindsym $mod+Alt+a exec pidof wiremix || $term --app-id=wiremix -e /usr/bin/wiremix
   # bindsym $mod+Alt+w exec pidof $nmtui || $term --app-id=nmtui-go -e ~/.local/bin/$nmtui
   bindsym $mod+Alt+t exec $scripts_path/toggle-waybar.sh
   # bindsym $mod+Alt+t exec killall -SIGUSR1 waybar

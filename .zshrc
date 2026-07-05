@@ -102,7 +102,6 @@ function y() {
 source ~/.config/zsh/aliases
 source ~/.config/zsh/envs
 # source ~/.config/zsh/functions
-# export PATH=~/bin:$PATH
 export PATH=~/.local/bin:~/bin:$PATH
 #added for pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
