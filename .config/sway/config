@@ -44,6 +44,8 @@ set $opened-windows rofi -terminal $term -show window
 set $browser brave-browser
 # set $browser helium
 
+workspace_layout tabbed
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -98,7 +100,7 @@ output eDP-1 scale 1
 
   input type:keyboard {
       xkb_layout "us, de"
-    # xkb_options "grp:alt_shift_toggle"
+      xkb_options "grp:alt_shift_toggle"
   }
 
 
@@ -119,7 +121,9 @@ bindsym $mod+q kill
 bindsym $mod+Space exec $menu
 
 # show opened windows
-bindsym $mod+o exec $opened-windows
+# bindsym $mod+o exec $opened-windows
+# app-switcher script taken from: https://gist.github.com/lbonn/89d064cde963cfbacabd77e0d3801398
+bindsym $mod+o exec $launcher_scripts_path/app-switcher
 
 #Start web browser
 bindsym $mod+b exec $browser
@@ -138,7 +142,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Lock screen
-bindsym $mod+Escape exec gtklock
+# bindsym $mod+Escape exec gtklock
+bindsym $mod+Escape exec swaylock
 #
 # Moving around:
 #
@@ -280,7 +285,8 @@ bindsym $mod+m exec $launcher_scripts_path/menu.sh
 # touchpad gestures
 bindgesture --exact swipe:3:left workspace next
 bindgesture --exact swipe:3:right workspace prev
-bindgesture --exact swipe:3:up exec rofi -show window
+# app-switcher script taken from: https://gist.github.com/lbonn/89d064cde963cfbacabd77e0d3801398
+bindgesture --exact swipe:3:up exec $launcher_scripts_path/app-switcher
 bindgesture --exact swipe:3:down kill
 
 # switch between current and last workspace, toggle back and forth
@@ -346,6 +352,7 @@ exec --no-startup-id wlsunset -t 3000 -T 5000 -s 18:30 -S 06:00
 
 
 # Remove title bar
+titlebar_border_thickness 3
 default_border pixel 4
 default_floating_border pixel 4
 gaps inner 6
@@ -356,9 +363,6 @@ gaps outer 0
 # Activate smart borders (always)
 smart_borders on
 smart_gaps on
-
-# move foot terminal with app_id="foot-scratchpad
-for_window [app_id="foot-scratchpad"] move to scratchpad
 
 #------------------------------#
 # Always float certain windows #
@@ -417,7 +421,8 @@ for_window [app_id="foot-scratchpad"] move to scratchpad
 
 ### Appearance
 # Font for window titles/tabs
-font pango:CaskaydiaMono Nerd Font Mono 10
+# font pango:CaskaydiaMono Nerd Font Mono 14
+font pango:JetBrainsMono 14
 
 
 # Clipboard history
