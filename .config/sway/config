@@ -41,6 +41,7 @@ set $opened-windows rofi -terminal $term -show window
 # set $opened-windows rofi -terminal foot -show combi -combi-modes window
 
 # web browser
+# set $browser flatpak run app.zen_browser.zen
 set $browser brave-browser
 # set $browser helium
 
@@ -405,6 +406,8 @@ smart_gaps on
 #------------------------------------------#
     # for_window [app_id="org.gnome.TextEditor"] move --no-auto-back-and-forth container to workspace 4
     # for_window [app_id="org.gnome.TextEditor"] focus
+    # assign [app_id="app.zen_browser.zen"] 1
+    # for_window [app_id="app.zen_browser.zen"] focus
     assign [app_id="brave-browser"] 1
     for_window [app_id="brave-browser"] focus
     assign [app_id="dev.zed.Zed"] 2
