@@ -4,7 +4,7 @@ font="CaskaydiaMono Nerd Font"
 indicator-radius=160
 indicator-thickness=20
 ignore-empty-password
-image=/home/nkk/Pictures/wallpapers/5748285.jpg
+image=/home/nkk/.config/swaylock/background.png
 scaling=fill
 
 color=1e1e2e

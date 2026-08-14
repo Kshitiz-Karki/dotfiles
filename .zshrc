@@ -107,4 +107,7 @@ export PATH=~/.local/bin:~/bin:$PATH
 # export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init - zsh)"
-eval "$(mise activate zsh)"
+# eval "$(mise activate zsh)"
+
+# opencode
+export PATH=/home/nkk/.opencode/bin:$PATH

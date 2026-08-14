@@ -13,7 +13,8 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
+            layout "us,de"
+            options "grp:alt_shift_toggle"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
 
             // If this section is empty, niri will fetch xkb settings
@@ -66,7 +67,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse
 }
 
 // You can configure outputs by their name, which you can find
@@ -75,7 +76,7 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -85,10 +86,10 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60.003"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1.5
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -106,12 +107,22 @@ input {
     position x=1280 y=0
 }
 
+// output "HDMI-A-1" {
+//     mode "1920x1080@60.000"
+//     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+//     scale 1
+//     // Transform allows to rotate the output counter-clockwise, valid values are:
+//     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+//     transform "normal"
+//     position x=1280 y=0
+// }
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 0
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -134,7 +145,7 @@ layout {
         // fixed 1920
     }
 
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Ctrl+Shift+R) toggles between.
+    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     // preset-window-heights { }
 
     // You can change the default width of the new windows.
@@ -156,7 +167,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 4
@@ -269,13 +280,20 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+
+
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/nkk/Pictures/wallpapers/wallhaven-yx5kml_1920x1080.png"
+spawn-sh-at-startup "wlsunset -t 3000 -T 5000 -s 18:00 -S 06:00"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
+// spawn-at-startup "qs" "-c" "noctalia-shell"
+
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -288,7 +306,8 @@ hotkey-overlay {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/B1/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -298,7 +317,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://niri-wm.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    // off
+    off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
@@ -324,6 +343,7 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="io.github.diegopvlk.Tomatillo"
     open-floating true
 }
 
@@ -346,6 +366,18 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    // match app-id="foot"
+    match app-id=r#"^(foot|obsidian|brave-browser)$"#
+    // open-maximized true
+    open-maximized-to-edges true
+}
+
+// window-rule {
+//     match app-id="obsidian"
+//     open-maximized-to-edges true
+// }
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -362,14 +394,21 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave-browser"; }
+    // Mod+B hotkey-overlay-title="Open a Browser: helium" { spawn "helium"; }
+    Mod+A hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -terminal foot -show combi -modes combi -combi-modes 'window,drun'"; }
+    // Mod+Alt+O hotkey-overlay-title="Show opened apps: rofi" { spawn "rofi" "-terminal" "foot" "-show" "window"; }
+    Mod+Space hotkey-overlay-title="Show system menu" { spawn "~/Documents/linops/scripts/menu"; }
+    // Mod+p hotkey-overlay-title="Show system menu" { spawn "~/Documents/linops/scripts/repos-rofi.sh"; }
+    // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -404,10 +443,10 @@ binds {
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    // Mod+H     { focus-column-left; }
+    // Mod+J     { focus-window-down; }
+    // Mod+K     { focus-window-up; }
+    // Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
@@ -550,14 +589,11 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
-    Mod+Shift+R { switch-preset-column-width-back; }
-
-    Mod+Ctrl+Shift+R { switch-preset-window-height; }
+    // Mod+R { switch-preset-column-width-back; }
+    Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
@@ -630,3 +666,10 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+overview {
+  // Choose your favorite color.
+  // backdrop-color "#26233a"
+}
+
+

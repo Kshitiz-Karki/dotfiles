@@ -42,7 +42,9 @@ set $opened-windows rofi -terminal $term -show window
 
 # web browser
 # set $browser flatpak run app.zen_browser.zen
-set $browser brave-browser
+# set $browser firefox
+set $browser brave-origin
+# set $browser brave-browser
 # set $browser helium
 
 workspace_layout tabbed
@@ -51,8 +53,8 @@ workspace_layout tabbed
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-# output * bg /home/nkk/Documents/github/CozyPixels/Nord/Dynamic Wallpapers/ign_Fuji-2.png fill
-exec waypaper --restore
+output * bg /home/nkk/.config/sway/wallpaper.png fill
+# exec waypaper --restore
 # output * bg /usr/share/backgrounds/default.jxl fill
 #
 # Example configuration:
@@ -408,13 +410,17 @@ smart_gaps on
     # for_window [app_id="org.gnome.TextEditor"] focus
     # assign [app_id="app.zen_browser.zen"] 1
     # for_window [app_id="app.zen_browser.zen"] focus
-    assign [app_id="brave-browser"] 1
-    for_window [app_id="brave-browser"] focus
+    assign [app_id="brave-origin"] 1
+    for_window [app_id="brave-origin"] focus
+    # assign [app_id="firefox"] 1
+    # for_window [app_id="firefox"] focus
     assign [app_id="dev.zed.Zed"] 2
     for_window [app_id="dev.zed.Zed"] focus
     # replace app_id with class, if socket=xwayland
-    assign [app_id="obsidian"] 3
-    for_window [app_id="obsidian"] focus
+    #assign [app_id="obsidian"] 3
+    #for_window [app_id="obsidian"] focus
+    assign [app_id="md.Obsidian"] 3
+    for_window [app_id="md.Obsidian"] focus
     assign [app_id="anki"] 4
     for_window [app_id="anki"] focus
     assign [app_id="chromium-browser"] 5

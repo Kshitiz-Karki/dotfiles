@@ -31,7 +31,7 @@ alias grs='git-repo-status'
 
 
 #dnf
-alias update='sudo dnf update'
+alias update='sudo dnf update && dnf needs-restarting'
 alias upgrade='sudo dnf upgrade'
 alias install='sudo dnf install'
 alias search='sudo dnf search'
