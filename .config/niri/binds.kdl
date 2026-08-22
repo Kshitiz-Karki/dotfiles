@@ -11,25 +11,23 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    // Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave-origin"; }
-    Mod+M hotkey-overlay-title="Launch rofi menu" { spawn "~/Projects/linops/scripts/rofi/menu.sh"; }
-    // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia msg session lock"; }
+    Mod+Return hotkey-overlay-title="Open Terminal: foot" { spawn "foot"; }
+    Mod+B hotkey-overlay-title="Open Browser: brave origin" { spawn "brave-origin"; }
+    Mod+M hotkey-overlay-title="Open Menu: rofi" { spawn "~/Projects/linops/scripts/rofi/menu.sh"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    // Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Shift+O repeat=false hotkey-overlay-title="Toggle niri overview" { toggle-overview; }
+    Mod+O hotkey-overlay-title="Open rofi custom app switcher" { spawn-sh "~/Projects/linops/scripts/niri/app-switcher"; }
 
     Mod+Q repeat=false { close-window; }
 
@@ -42,31 +40,31 @@ binds {
     Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
+    Mod+Ctrl+Left   hotkey-overlay-title="Move column left" { move-column-left; }
+    Mod+Ctrl+Down   hotkey-overlay-title="Move window down" { move-window-down; }
+    Mod+Ctrl+Up     hotkey-overlay-title="Move window up" { move-window-up; }
+    Mod+Ctrl+Right  hotkey-overlay-title="Move column right" { move-column-right; }
+    Mod+Ctrl+H      hotkey-overlay-title="Move column left" { move-column-left; }
+    Mod+Ctrl+J      hotkey-overlay-title="Move window down" { move-window-down; }
+    Mod+Ctrl+K      hotkey-overlay-title="Move window up" { move-window-up; }
+    Mod+Ctrl+L      hotkey-overlay-title="Move column right" { move-column-right; }
 
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Home        hotkey-overlay-title="Focus column first" { focus-column-first; }
+    Mod+End         hotkey-overlay-title="Focus column last" { focus-column-last; }
+    Mod+Ctrl+Home   hotkey-overlay-title="Move column to first" { move-column-to-first; }
+    Mod+Ctrl+End    hotkey-overlay-title="Move column to last" { move-column-to-last; }
 
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Page_Down         hotkey-overlay-title="Focus workspace down" { focus-workspace-down; }
+    Mod+Page_Up           hotkey-overlay-title="Focus workspace up" { focus-workspace-up; }
+    Mod+U                 hotkey-overlay-title="Focus workspace down" { focus-workspace-down; }
+    Mod+I                 hotkey-overlay-title="Focus workspace up" { focus-workspace-up; }
+    Mod+Ctrl+Page_Down    hotkey-overlay-title="Move column to workspace down" { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up      hotkey-overlay-title="Move column to workspace up" { move-column-to-workspace-up; }
     // Mod+Ctrl+U         { move-column-to-workspace-down; }
     // Mod+Ctrl+I         { move-column-to-workspace-up; }
 
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+Page_Down hotkey-overlay-title="Move workspace down" { move-workspace-down; }
+    Mod+Shift+Page_Up   hotkey-overlay-title="Move workspace up" { move-workspace-up; }
     // Mod+Shift+U         { move-workspace-down; }
     // Mod+Shift+I         { move-workspace-up; }
 
@@ -101,7 +99,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    Mod+Tab { focus-workspace-previous; }
+    Mod+Tab hotkey-overlay-title="Focus previous workspace" { focus-workspace-previous; }
 
     // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
@@ -109,12 +107,12 @@ binds {
     Mod+Shift+R { switch-preset-column-width-back; }
 
     // Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+F   hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
     // While maximize-column leaves gaps and borders around the window,
     // maximize-window-to-edges doesn't: the window expands to the edges of the screen.
     // This bind corresponds to normal window maximizing,
     // e.g. by double-clicking on the titlebar.
-    Mod+F { maximize-window-to-edges; }
+    Mod+F         hotkey-overlay-title="Maximize window to edges" { maximize-window-to-edges; }
 
     // Finer width adjustments.
     // This command can also:
@@ -137,11 +135,12 @@ binds {
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
-    Mod+Shift+Space { switch-layout "prev"; }
+    Mod+Shift+Space hotkey-overlay-title="Switch keyboard layout" { switch-layout "prev"; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print       hotkey-overlay-title="Take screenshot-region: save & copy" { screenshot; }
+    Mod+Print   hotkey-overlay-title="Take screenshot-region: only copy" { spawn-sh "geometry=\"$(slurp)\"; [ -n \"$geometry\" ] && grim -g \"$geometry\" - | wl-copy --type image/png && notify-send \"📋 Screenshot copied to clipboard (not saved)\""; }
+    Ctrl+Print  hotkey-overlay-title="Take screenshot-screen: save & copy" { screenshot-screen; }
+    Alt+Print   hotkey-overlay-title="Take screenshot-window: save & copy" { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -159,19 +158,37 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    // Mod+Shift+P { power-off-monitors; }
 
-    //added by me
-    Mod+Shift+W { spawn-sh "~/Projects/linops/scripts/screenshot-copy_niri"; }
-    Mod+Shift+B { spawn-sh "~/Documents/backup/secret.py pass | wl-copy && noctalia msg notification-show '📋 Bitwarden master password copied to clipboard'"; }
+    //more keybinds
+    Mod+Shift+P { spawn-sh "~/Documents/backup/secret.py pass | wl-copy && noctalia msg notification-show '📋 Bitwarden master password copied to clipboard'"; }
     Mod+Shift+U { spawn-sh "~/Documents/backup/secret.py user | wl-copy && noctalia msg notification-show '📋 User password copied to clipboard'"; }
+    //rofi menu
+    Mod+Slash { spawn-sh "~/Projects/linops/scripts/niri/keybinds"; }
+    // Mod+Ctrl+Q { spawn-sh "noctalia msg panel-toggle launcher /web"; }
+    Mod+Ctrl+Q { spawn-sh "~/Projects/linops/scripts/rofi/quicklinks.sh"; }
+    Mod+Ctrl+S { spawn-sh "~/Projects/linops/scripts/rofi/web-search.sh"; }
+    Mod+Ctrl+P { spawn-sh "~/Projects/linops/scripts/rofi/tmux-projects"; }
+    Mod+Ctrl+T { spawn-sh "~/Projects/linops/scripts/rofi/tmux-sessions"; }
+    Mod+Ctrl+C { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Ctrl+X { spawn-sh "noctalia msg panel-toggle session"; }
+    // noctalia msg panel-toggle (clipboard, control-center, launcher, polkit, session, setup-wizard, test, tray-drawer, wallpaper)
+    Mod+Shift+B hotkey-overlay-title="Toggle Bar" { spawn-sh "noctalia msg bar-toggle"; }
+
     //noctalia
     // Core Noctalia binds
     Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
-    // Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
+    Mod+Comma           hotkey-overlay-title="Toggle Noctalia: settings" { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+Shift+Comma     hotkey-overlay-title="Toggle Noctalia: control-center" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    // Alt+Tab             hotkey-overlay-title="Window switcher: noctalia" { spawn-sh "noctalia msg window-switcher"; }
     // Niri has a built-in window switcher you might want to try it to see which one you prefer.
+
+    Mod+Alt+L hotkey-overlay-title="Power: Lock" { spawn-sh "noctalia msg session lock"; }
+    Mod+Alt+X hotkey-overlay-title="Power: Logout" { spawn-sh "noctalia msg session lock"; }
+    Mod+Alt+S hotkey-overlay-title="Power: Suspend" { spawn-sh "noctalia msg session lock"; }
+    Mod+Alt+R hotkey-overlay-title="Power: Reboot" { spawn-sh "noctalia msg session lock"; }
+    Mod+Alt+P hotkey-overlay-title="Power: Shutdown" { spawn-sh "noctalia msg session lock"; }
+
 
     // Audio & Brightness
     // Example volume keys mappings for PipeWire & WirePlumber.

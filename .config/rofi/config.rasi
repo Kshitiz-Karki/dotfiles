@@ -33,4 +33,4 @@ configuration{
     matching: "fuzzy";
     case-sensitive: false;
 }
-@import "theme"
+@import "noctalia"

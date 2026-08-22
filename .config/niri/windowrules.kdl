@@ -82,7 +82,8 @@ window-rule {
     match app-id="^brave-origin$"
     match app-id="^dev.zed.Zed$"
     match app-id="^md.Obsidian$"
-    match app-id="^anki$"
+    // match app-id="^anki$"
     match app-id="^foot$"
+    match app-id="^tmux-sessions$"
     open-maximized-to-edges true
 }

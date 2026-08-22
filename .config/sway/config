@@ -126,7 +126,7 @@ bindsym $mod+Space exec $menu
 # show opened windows
 # bindsym $mod+o exec $opened-windows
 # app-switcher script taken from: https://gist.github.com/lbonn/89d064cde963cfbacabd77e0d3801398
-bindsym $mod+o exec $launcher_scripts_path/app-switcher
+bindsym $mod+o exec $scripts_path/sway/app-switcher
 
 #Start web browser
 bindsym $mod+b exec $browser
@@ -211,9 +211,9 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 # Switch the current container between different layout styles
 #NotInUse
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -269,15 +269,15 @@ bindsym $mod+m exec $launcher_scripts_path/menu.sh
 
 # mode "menu" {
   # taken from https://github.com/Ruixi-rebirth/sway-dotfiles/tree/main
-  bindsym $mod+Alt+k exec $launcher_scripts_path/keybindings-sway.sh
+  bindsym $mod+Alt+k exec $scripts_path/sway/keybinds
   bindsym $mod+Alt+v exec $launcher_scripts_path/keybindings-vimium.sh
   # bindsym $mod+Alt+b exec pidof $bluetui || $term --app-id=bluetui -e ~/.local/bin/$bluetui
   # bindsym $mod+Alt+a exec pidof wiremix || $term --app-id=wiremix -e /usr/bin/wiremix
   # bindsym $mod+Alt+w exec pidof $nmtui || $term --app-id=nmtui-go -e ~/.local/bin/$nmtui
   bindsym $mod+Alt+t exec $scripts_path/toggle-waybar.sh
   # bindsym $mod+Alt+t exec killall -SIGUSR1 waybar
-  bindsym $mod+s exec $launcher_scripts_path/tmux-sessions
-  bindsym $mod+p exec $launcher_scripts_path/tmux-projects
+  # bindsym $mod+s exec $launcher_scripts_path/tmux-sessions
+  # bindsym $mod+p exec $launcher_scripts_path/tmux-projects
   # bindsym $mod+c exec $launcher_scripts_path/cliphist-lookup
   # bindsym $mod+d exec $launcher_scripts_path/cliphist-delete
   bindsym $mod+Alt+x exec rofi -show power-menu -modi power-menu:$launcher_scripts_path/power-menu
@@ -348,7 +348,8 @@ bindsym $mod+Shift+u exec ~/Documents/backup/secret.py user | wl-copy && notify-
 # for_window [class="^.*"] border pixel 3
 
 # autostart
-exec --no-startup-id wlsunset -t 3000 -T 5000 -s 18:30 -S 06:00
+# exec --no-startup-id wlsunset -t 3000 -T 5000 -s 18:30 -S 06:00
+
 # exec --no-startup-id wl-paste --type text --watch cliphist store
 # exec_always --no-startup-id ~/bin/autotiling
 # exec_always  --no-startup-id  mako &
@@ -437,6 +438,17 @@ font pango:JetBrainsMono 14
 # Clipboard history
 # exec wl-paste --watch cliphist store
 
+exec noctalia
+
+# set $ipc noctalia msg
+# bindsym $mod+space exec $ipc panel-toggle launcher
+# bindsym $mod+s exec $ipc panel-toggle control-center
+# bindsym $mod+comma exec $ipc settings-toggle
+bindsym --locked XF86AudioRaiseVolume exec $ipc volume-up
+bindsym --locked XF86AudioLowerVolume exec $ipc volume-down
+bindsym --locked XF86AudioMute exec $ipc volume-mute
+bindsym --locked XF86MonBrightnessUp exec $ipc brightness-up
+bindsym --locked XF86MonBrightnessDown exec $ipc brightness-down
 
 
 # Include configs from 3 locations:
@@ -461,3 +473,5 @@ font pango:JetBrainsMono 14
 # the trick, it's all in the `wordexp(3)`.
 #
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+include ~/.config/sway/noctalia
