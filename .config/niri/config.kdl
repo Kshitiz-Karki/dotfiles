@@ -132,6 +132,7 @@ prefer-no-csd
 
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  QT_QPA_PLATFORMTHEME "qt6ct"
 }
 
 // You can change the path where screenshots are saved.

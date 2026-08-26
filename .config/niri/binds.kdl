@@ -150,7 +150,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
@@ -183,7 +183,8 @@ binds {
     // Alt+Tab             hotkey-overlay-title="Window switcher: noctalia" { spawn-sh "noctalia msg window-switcher"; }
     // Niri has a built-in window switcher you might want to try it to see which one you prefer.
 
-    Mod+Alt+L hotkey-overlay-title="Power: Lock" { spawn-sh "noctalia msg session lock"; }
+    // Mod+Alt+L hotkey-overlay-title="Power: Lock" { spawn-sh "noctalia msg session lock"; }
+    Mod+Escape hotkey-overlay-title="Power: Lock" { spawn-sh "noctalia msg session lock"; }
     Mod+Alt+X hotkey-overlay-title="Power: Logout" { spawn-sh "noctalia msg session lock"; }
     Mod+Alt+S hotkey-overlay-title="Power: Suspend" { spawn-sh "noctalia msg session lock"; }
     Mod+Alt+R hotkey-overlay-title="Power: Reboot" { spawn-sh "noctalia msg session lock"; }
